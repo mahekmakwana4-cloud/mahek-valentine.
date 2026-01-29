@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Vihang — From Mahek</title>
+<style>
+body{
+  margin:0;
+  font-family: 'Georgia', serif;
+  background:#f6efe7;
+  color:#2b2b2b;
+}
+.section{
+  min-height:100vh;
+  padding:60px 10%;
+  box-sizing:border-box;
+  display:none;
+}
+.section.active{display:block;}
+.center{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.paper{
+  background:#fffaf3;
+  padding:40px;
+  border:1px solid #e0d6c7;
+  max-width:800px;
+  margin:auto;
+}
+button{
+  padding:12px 26px;
+  background:#2b2b2b;
+  color:white;
+  border:none;
+  margin-top:20px;
+  cursor:pointer;
+  font-size:16px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:6px;
+  margin-top:20px;
+}
+.grid div{
+  border:1px solid #aaa;
+  padding:10px;
+  font-weight:bold;
+  text-align:center;
+}
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  font-family:inherit;
+}
+.hidden{display:none;}
+</style>
+<script>
+let score = 0;
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function answerCorrect(){
+  score += 20;
+  showSection('q2');
+}
+function answerWrong(){
+  alert("Oops! Try again 😉");
+}
+function finishQuiz(){
+  document.getElementById('resultText').innerText = "You know Mahek " + score + "%";
+  showSection('finalPage');
+}
+</script>
+</head>
+<body>
+
+<!-- INTRO PAGES -->
+<div class="section center active" id="intro1">
+  <h1>Hey Vihang</h1>
+  <p>Are you ready for your first Valentine journey?</p>
+  <button onclick="showSection('intro2')">Yes, let's go!</button>
+</div>
+
+<div class="section center" id="intro2">
+  <h2>Take your time ❤️</h2>
+  <p>Look around, the hearts are guiding you...</p>
+  <button onclick="showSection('letter1')">Continue</button>
+</div>
+
+<!-- LOVE LETTER SPLIT OVER 5 PAGES -->
+<div class="section" id="letter1">
+  <div class="paper">
+    <h2>Love Letter Part 1</h2>
+    <p>Vihang, I love you quietly but fiercely. My world feels incomplete without you. Even on days we fight or misunderstand, I realize how much I need you.</p>
+    <button onclick="showSection('letter2')">Next</button>
+  </div>
+</div>
+<div class="section" id="letter2">
+  <div class="paper">
+    <h2>Love Letter Part 2</h2>
+    <p>We are past the honeymoon phase, and that’s okay. We argue, we learn, and somehow we grow stronger instead of breaking. You annoy me sometimes, but I cannot imagine my life without you.</p>
+    <button onclick="showSection('letter3')">Next</button>
+  </div>
+</div>
+<div class="section" id="letter3">
+  <div class="paper">
+    <h2>Love Letter Part 3</h2>
+    <p>Loving you hasn’t been perfect, but it’s real. I love every little part of you, the frustrating moments and the beautiful ones. I don’t want perfect, I want us.</p>
+    <button onclick="showSection('letter4')">Next</button>
+  </div>
+</div>
+<div class="section" id="letter4">
+  <div class="paper">
+    <h2>Love Letter Part 4</h2>
+    <p>You make my world brighter, my heart fuller. Even when we argue, we stay connected, because we choose each other every single day.</p>
+    <button onclick="showSection('letter5')">Next</button>
+  </div>
+</div>
+<div class="section" id="letter5">
+  <div class="paper">
+    <h2>Love Letter Part 5</h2>
+    <p>I love you deeply, quietly, always. This journey we are on together is my favorite adventure, and I want to keep growing with you.</p>
+    <button onclick="showSection('crossword')">Next</button>
+  </div>
+</div>
+
+<!-- CROSSWORD / WORD SEARCH -->
+<div class="section center" id="crossword">
+  <h2>Find MAHEK in the grid</h2>
+  <p>Harder than it looks: diagonal, reversed, overlapping</p>
+  <div class="grid">
+    <div>M</div><div>A</div><div>X</div><div>P</div><div>L</div><div>R</div><div>Q</div><div>O</div><div>T</div><div>S</div>
+    <div>Z</div><div>K</div><div>E</div><div>H</div><div>A</div><div>M</div><div>N</div><div>B</div><div>U</div><div>Y</div>
+    <div>Q</div><div>R</div><div>L</div><div>E</div><div>K</div><div>A</div><div>H</div><div>J</div><div>F</div><div>D</div>
+    <div>P</div><div>O</div><div>W</div><div>R</div><div>E</div><div>K</div><div>A</div><div>M</div><div>S</div><div>L</div>
+  </div>
+  <button onclick="showSection('q1')">Found it</button>
+</div>
+
+<!-- QUIZ PAGES -->
+<div class="section center" id="q1">
+  <h2>If Mahek could turn one ordinary day into a magical adventure, what would she choose?</h2>
+  <button onclick="answerCorrect()">A secret beach under the moonlight</button>
+  <button onclick="answerWrong()">Luxury hotel</button>
+  <button onclick="answerWrong()">Road trip</button>
+  <button onclick="answerWrong()">Theme park</button>
+</div>
+<div class="section center" id="q2">
+  <h2>Which thing annoys Mahek the most about you?</h2>
+  <button onclick="answerCorrect()">Sleeping</button>
+  <button onclick="answerWrong()">Late replies</button>
+  <button onclick="answerWrong()">Overthinking</button>
+  <button onclick="answerWrong()">Silence</button>
+</div>
+<div class="section center" id="q3">
+  <h2>Mahek’s favourite series</h2>
+  <input placeholder="Type your answer">
+  <button onclick="showSection('q4')">Next</button>
+</div>
+<div class="section center" id="q4">
+  <h2>Describe our relationship</h2>
+  <textarea rows="4"></textarea>
+  <button onclick="showSection('q5')">Next</button>
+</div>
+<div class="section center" id="q5">
+  <h2>Mahek can’t live without</h2>
+  <button onclick="answerCorrect()">You</button>
+  <button onclick="answerWrong()">Junk food</button>
+  <button onclick="answerWrong()">Family</button>
+  <button onclick="answerWrong()">Her phone</button>
+  <button onclick="finishQuiz()">Finish</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="section center" id="finalPage">
+  <h1 id="resultText"></h1>
+  <h2>Will you be my Valentine?</h2>
+</div>
+
+</body>
+</html>
